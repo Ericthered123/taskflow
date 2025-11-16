@@ -1,0 +1,52 @@
+spring:
+  application:
+    name: taskflow
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/taskflow_db
+    username: eric        # Cambiar por tu usuario
+    password: eric  # Cambiar por tu password
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update        # 'update' para dev, 'validate' o 'none' en prod
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+server:
+  port: 8080
+
+# JWT
+jwt:
+  secret: mysecret
+  access-expiration: 900000     # 15 min
+  refresh-expiration: 604800000 # 7 dias
+
+admin:
+  username: eric_admin
+  password: eric321
+  email: eric8doyle@gmail.com
+  role: ADMIN
+
+# Springdoc OpenAPI (Swagger)
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui/index.html
+    operations-sort-order: method
+    display-request-duration: true
+
+# Logging opcional para desarrollo
+logging:
+  level:
+    org.springframework: INFO
+    com.eric.taskflow: DEBUG
